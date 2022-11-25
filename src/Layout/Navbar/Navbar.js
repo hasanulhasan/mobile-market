@@ -5,12 +5,12 @@ const Navbar = () => {
   const menuItems = <React.Fragment>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/blog'>Blog</Link></li>
-    <li><Link to='/'>All Sellers</Link></li>
+    <li><Link to='/allcategories'>All Category</Link></li>
     <li><Link to='/'>Login</Link></li>
   </React.Fragment>
 
   return (
-    <div className="navbar bg-base-100 flex justify-between h-24">
+    <div className="navbar bg-base-100 flex justify-between h-24 font-bold">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
