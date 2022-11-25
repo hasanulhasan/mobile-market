@@ -9,7 +9,7 @@ const Category = () => {
     <div>
       <div>
         <div className='text-center'>
-          <h1 className="text-5xl font-semibold py-3 ">All Mobile phones in a row</h1>
+          <h1 className="text-5xl font-semibold py-3 ">Your Searching Category is here</h1>
           <p className='pb-8'>You can choice your favorite second hand smart phone phone here </p>
         </div>
         <div className='my-4 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>

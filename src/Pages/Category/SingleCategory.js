@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleCategory = ({ mobile }) => {
-  const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date } = mobile;
+  const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date, category } = mobile;
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact w-96 bg-base-100 shadow-xl outline p-4 outline-lime-100">
       <figure>
         <img src={img} alt=".." className='h-72 w-80 rounded-lg' />
       </figure>
@@ -23,8 +23,8 @@ const SingleCategory = ({ mobile }) => {
         </div>
         <p className='text-center'>Posted on <strong>{date}</strong> by <strong>{sellerName}</strong></p>
 
-        <div className="card-actions justify-center">
-          <Link><button className="btn btn-warning btn-wide btn-outline">Buy Now</button></Link>
+        <div className=" w-full">
+          <Link><button className="btn btn-warning  btn-outline w-full">Book Now</button></Link>
         </div>
       </div>
     </div>
