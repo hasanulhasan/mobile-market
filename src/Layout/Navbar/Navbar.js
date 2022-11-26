@@ -6,7 +6,8 @@ const Navbar = () => {
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/blog'>Blog</Link></li>
     <li><Link to='/allcategories'>All Category</Link></li>
-    <li><Link to='/'>Login</Link></li>
+    <li><Link to='/login'>Login</Link></li>
+    <li><Link to='/signup'>SignUp</Link></li>
   </React.Fragment>
 
   return (
