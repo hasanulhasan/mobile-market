@@ -10,6 +10,7 @@ const AddProduct = () => {
     const form = e.target;
     const name = form.name.value;
     const sellerName = form.sellerName.value;
+    const phone = form.phone.value;
     const img = form.img.value;
     const location = form.location.value;
     const originalPrice = form.originalPrice.value;
@@ -17,13 +18,13 @@ const AddProduct = () => {
     const date = form.date.value;
     const yearUsed = form.yearUsed.value;
     const category = form.category.value;
-    console.log(name, sellerName, img, location, originalPrice, resalePrice, date, yearUsed, category);
+    console.log(name, sellerName, phone, img, location, originalPrice, resalePrice, date, yearUsed, category);
 
     const productInfo = {
-      name, sellerName, img, location, originalPrice, resalePrice, date, yearUsed, category
+      name, sellerName, phone, img, location, originalPrice, resalePrice, date, yearUsed, category
     }
 
-    fetch('', {
+    fetch('http://localhost:5000/addProducts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -48,14 +49,21 @@ const AddProduct = () => {
       <div className='w-2/3'>
         <form onSubmit={handleSubmit} className="p-5 outline-double outline-4 outline-offset-2 rounded-lg my-4 " >
           <h1 className='text-center text-3xl py-2 font-semibold'>Add Product</h1>
-          <div className="form-control mx-4">
-            <label className="label">
-              <span className="label-text text-xl">Product Name</span>
-            </label>
-            <input type="text" placeholder="Product Name" name="name" className="input input-bordered" />
-          </div>
           <div className='lg:flex'>
             <div className='lg:w-full mx-4'>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-xl">Product Name</span>
+                </label>
+                <input type="text" placeholder="Product Name" name="name" className="input input-bordered" />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-xl">Phone Number</span>
+                </label>
+                <input type="text" placeholder="Phone Number" name="phone" className="input input-bordered" required />
+              </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-xl">Seller Name</span>
@@ -74,15 +82,15 @@ const AddProduct = () => {
                 </label>
                 <input type="text" placeholder="Location" name="location" className="input input-bordered" />
               </div>
+            </div>
+
+            <div className='lg:w-full mx-4'>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-xl">Post Date</span>
                 </label>
                 <input type="text" placeholder="i.e (10 Sep 2021)" name="date" className="input input-bordered" />
               </div>
-
-            </div>
-            <div className='lg:w-full mx-4'>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-xl">Old Price</span>
@@ -97,9 +105,9 @@ const AddProduct = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-xl">Used Year</span>
+                  <span className="label-text text-xl">Used Year/Condition type</span>
                 </label>
-                <input type="text" placeholder="Used Year" name="yearUsed" className="input input-bordered" />
+                <input type="text" placeholder="Used Year/Condition type" name="yearUsed" className="input input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">
@@ -118,8 +126,8 @@ const AddProduct = () => {
             <button type='submit' className="btn btn-info btn-outline">Submit</button>
           </div>
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
