@@ -13,13 +13,12 @@ const Navbar = () => {
   const menuItems = <React.Fragment>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/blog'>Blog</Link></li>
-    <li><Link to='/allcategories'>All Category</Link></li>
+    <li><Link to='/allCategories'>All Category</Link></li>
     <li><Link to='/addProducts'>Add Product</Link></li>
-
-    {/* <li><Link to='/signup'>SignUp</Link></li> */}
     {
       user?.uid ?
         <>
+          <li><Link to='/dashboard'>DashBoard</Link></li>
           <li><button onClick={handleSignOut}>Logout</button></li>
         </>
         :

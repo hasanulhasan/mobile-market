@@ -4,6 +4,7 @@ import AddProduct from "../Pages/AddProduct/AddProduct";
 import AllCategories from "../Pages/AllCategories/AllCategories";
 import Blog from "../Pages/Blog/Blog";
 import Category from "../Pages/Category/Category";
+import DashBoard from "../Pages/DashBoard/DashBoard";
 import Home from "../Pages/Home/Home";
 import Login from "../UserControl/Login/Login";
 import SignUp from "../UserControl/SignUp/SignUp";
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
         element: <AddProduct></AddProduct>
       },
       {
-        path: '/allcategories',
+        path: '/dashboard',
+        element: <DashBoard></DashBoard>
+      },
+      {
+        path: '/allCategories',
         element: <AllCategories></AllCategories>
       },
       {
