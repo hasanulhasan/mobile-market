@@ -20,8 +20,8 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/2482/2482945.png" alt="" className='h-8 w-10' />
-        <Link className="btn btn-ghost normal-case text-xl">Mobile Market</Link>
+
+        <Link to='/' className="btn btn-ghost normal-case text-xl"><img src="https://cdn-icons-png.flaticon.com/512/2482/2482945.png" alt="" className='h-8 w-10' />Mobile Market</Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
