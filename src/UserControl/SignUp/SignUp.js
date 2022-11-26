@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signup from '../../../src/asset/signup.gif'
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
@@ -13,20 +14,21 @@ const SignUp = () => {
   const googleProvider = new GoogleAuthProvider();
   const from = location.state?.from?.pathname || "/";
 
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const handleLogin = (data) => {
     console.log(data);
     createUser(data.email, data.password)
       .then(result => {
         const user = result.user;
         console.log(user);
-        // toast('User created successfully')
+        toast('Signup successful')
         const userInfo = {
           displayName: data.name
         }
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name, data.email);
+            saveUserInfo(data.name, data.email, data.role);
+            reset();
           })
           .catch(err => console.error(err))
 
@@ -37,8 +39,9 @@ const SignUp = () => {
       })
   }
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
+  const saveUserInfo = (name, email, role) => {
+    const user = { name, email, role };
+    // console.log(user);
     fetch(`http://localhost:5000/users`, {
       method: 'POST',
       headers: { 'content-type': 'application/json ' },
@@ -46,7 +49,7 @@ const SignUp = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('save user', data)
+        console.log('user saved', data)
         navigate('/');
       })
   }
@@ -57,6 +60,7 @@ const SignUp = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        toast('Login successful');
         navigate(from, { replace: true });
       })
       .catch(err => {
@@ -94,6 +98,15 @@ const SignUp = () => {
                     minLength: { value: 8, message: "Your name is too short" }
                   })} placeholder="Name" className="input input-bordered w-full" />
                   {errors.name && <p role="alert" className='text-red-600'>{errors.name?.message}</p>}
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Select your role</span>
+                  </label>
+                  <select required className="select w-full bordered border-emerald-800" {...register("role")}>
+                    <option value='admin' name='admin' >Admin</option>
+                    <option value='seller' name='seller' >Seller</option>
+                  </select>
                 </div>
                 <div className="form-control w-full">
                   <label className="label">
