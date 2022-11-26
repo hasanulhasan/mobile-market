@@ -4,7 +4,7 @@ import SingleCategory from './SingleCategory';
 
 const Category = () => {
   const phones = useLoaderData();
-  console.log(phones);
+  // console.log(phones);
   return (
     <div>
       <div>

@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import signup from '../../../src/asset/signup.gif'
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
@@ -49,7 +50,8 @@ const SignUp = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('user saved', data)
+        console.log('user saved', data);
+        swal("User Created!", "Now you can browse!", "success");
         navigate('/');
       })
   }

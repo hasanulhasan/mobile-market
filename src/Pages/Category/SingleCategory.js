@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import BuyingModal from './BuyingModal';
 
 const SingleCategory = ({ mobile }) => {
-  const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date, category } = mobile;
+  const [mobileInfo, setMobileInfo] = useState(null);
+  const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date } = mobile;
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl outline p-4 outline-lime-100">
       <figure>
@@ -14,7 +16,6 @@ const SingleCategory = ({ mobile }) => {
           <div>
             <p>Location: {location}</p>
             <p>Used {yearUsed} years</p>
-
           </div>
           <div className='text-end'>
             <p>Current price: {resalePrice}</p>
@@ -22,11 +23,19 @@ const SingleCategory = ({ mobile }) => {
           </div>
         </div>
         <p className='text-center'>Posted on <strong>{date}</strong> by <strong>{sellerName}</strong></p>
-
         <div className=" w-full">
-          <Link><button className="btn btn-warning  btn-outline w-full">Book Now</button></Link>
+          <label
+            onClick={() => setMobileInfo(mobile)}
+            htmlFor="buyingModal"
+            className="btn btn-warning  btn-outline w-full" >Book Now</label>
         </div>
       </div>
+      {
+        mobileInfo &&
+        <BuyingModal
+          mobileInfo={mobileInfo}
+        ></BuyingModal>
+      }
     </div>
   );
 };
