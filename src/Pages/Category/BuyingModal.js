@@ -30,7 +30,8 @@ const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
         console.log(data)
         if (data.acknowledged) {
           setMobileInfo(null);
-          swal("Iteam Booked!", "Thanks!", "success");
+          swal("Item Booked!", "Thanks for you booking!", "success");
+          form.reset();
         }
         else {
           swal("Oops!", `${data.message}`, "error");
@@ -47,9 +48,11 @@ const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
           <label htmlFor="buyingModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <div className='font-bold mb-4'>
             <h3 className="text-lg font-bold">Product name: {name}</h3>
-            <img src={img} alt='item-img' className='h-44 w-40 rounded-lg'></img>
-            <p>Price: {originalPrice} taka</p>
-            <p>If you want to book this item please fiil up this form</p>
+            <div className='flex justify-center'>
+              <img src={img} alt='item-img' className='h-44 w-40 rounded-lg'></img>
+            </div>
+            <p className='text-center'>Price: {resalePrice} taka</p>
+            <p>Note: If you want to book this item please fiil up this form</p>
           </div>
 
           <form onSubmit={handleBookItem} className='grid grid-cols-1 gap-3 font-semibold mt-2'>
