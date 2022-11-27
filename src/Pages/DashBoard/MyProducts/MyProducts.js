@@ -9,7 +9,6 @@ const MyProducts = () => {
       <h1 className='text-4xl font-bold mb-3'>My Products</h1>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
-
           <thead>
             <tr>
               <th>No</th>
