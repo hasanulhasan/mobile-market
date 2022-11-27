@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../UserControl/Contexts/AuthProvider/AuthProvider';
 
 const AllSeller = () => {
+  const [sellers, setSellers] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/seller`)
+      .then(res => res.json())
+      .then(data => setSellers(data))
+  }, [])
+
+
   return (
     <div>
       <p className='text-4xl font-bold mb-3'>All seller</p>
@@ -8,35 +18,23 @@ const AllSeller = () => {
         <table className="table table-zebra w-full">
           <thead>
             <tr>
-              <th>No</th>
-              <th>Product Name</th>
-              <th>Status</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
               <th>Delete</th>
-              <th>Advertise</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-              <td>Blue</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-              <td>Red</td>
-            </tr>
+            {
+              sellers.map(seller => <tr>
+                <th>{seller.name}</th>
+                <td>{seller.email}</td>
+                <td>{seller.role}</td>
+                <button className="btn btn-square btn-outline">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+              </tr>)
+            }
           </tbody>
         </table>
       </div>

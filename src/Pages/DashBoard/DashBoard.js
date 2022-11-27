@@ -14,6 +14,7 @@ const DashBoard = () => {
             <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/addProducts'>Add Product</Link></li>
             <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard'>My Products</Link></li>
             <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/allSeller'>All Seller</Link></li>
+            <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
             <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/myOrders'>My Orders</Link></li>
           </ul></div>
       </div>

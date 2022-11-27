@@ -4,7 +4,6 @@ import { AuthContext } from '../../../UserControl/Contexts/AuthProvider/AuthProv
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
-  // const mail = user.email;
   const [orders, setOrders] = useState([]);
   console.log(orders);
 
@@ -14,18 +13,6 @@ const MyOrders = () => {
       .then(data => setOrders(data))
   }, [])
 
-  // const { data: orders = [], refetch, isLoading } = useQuery({
-  //   queryKey: ['orders', mail],
-  //   queryFn: async () => {
-  //     const res = await fetch(`http://localhost:5000/bookings/${mail}`)
-  //     const data = await res.json();
-  //     return data
-  //   }
-  // });
-
-
-
-
   return (
     <div>
       <h1 className='text-4xl font-bold mb-3'>My Orders</h1>
@@ -33,21 +20,27 @@ const MyOrders = () => {
         <table className="table table-zebra w-full">
           <thead>
             <tr>
-              <th>No</th>
+              <th>Avatar</th>
               <th>Product Name</th>
-              <th>Status</th>
-              <th>Delete</th>
-              <th>Advertise</th>
+              <th>Price</th>
+              <th>Phone</th>
+              <th>Location</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {
               orders.map(order => <tr>
+                <th><div className="avatar">
+                  <div className="w-20 rounded">
+                    <img src={order.img} alt='avatar' />
+                  </div>
+                </div></th>
                 <th>{order.name}</th>
+                <th>{order.resalePrice}</th>
                 <td>{order.phone}</td>
                 <td>{order.location}</td>
-                <td></td>
-                <td>Purple</td>
+                <td><button className="btn btn-sm">Pay</button></td>
               </tr>)
             }
           </tbody>

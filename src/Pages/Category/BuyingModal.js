@@ -10,13 +10,13 @@ const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
   const handleBookItem = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const buyerName = form.name.value;
     const email = form.email.value;
     const phone = form.phone.value;
     const location = form.location.value;
 
     const booking = {
-      name, email, phone, location
+      buyerName, resalePrice, img, name, email, phone, location
     }
 
     console.log(booking);
