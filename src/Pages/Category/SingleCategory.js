@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BuyingModal from './BuyingModal';
 
-const SingleCategory = ({ mobile }) => {
-  const [mobileInfo, setMobileInfo] = useState(null);
+const SingleCategory = ({ mobile, setMobileInfo }) => {
+
   const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date } = mobile;
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl outline p-4 outline-lime-100">
@@ -30,12 +30,7 @@ const SingleCategory = ({ mobile }) => {
             className="btn btn-warning  btn-outline w-full" >Book Now</label>
         </div>
       </div>
-      {
-        mobileInfo &&
-        <BuyingModal
-          mobileInfo={mobileInfo}
-        ></BuyingModal>
-      }
+
     </div>
   );
 };

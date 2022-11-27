@@ -1,25 +1,66 @@
 import React, { useContext } from 'react';
+import swal from 'sweetalert';
 import { AuthContext } from '../../UserControl/Contexts/AuthProvider/AuthProvider';
 
-const BuyingModal = ({ mobileInfo }) => {
+const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
   const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date } = mobileInfo;
+  // console.log(name);
   const { user } = useContext(AuthContext);
-  const { displayName, email } = user;
+
+  const handleBookItem = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const location = form.location.value;
+
+    const booking = {
+      name, email, phone, location
+    }
+
+    console.log(booking);
+    fetch('http://localhost:5000/bookings', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(booking)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.acknowledged) {
+          setMobileInfo(null);
+          swal("Iteam Booked!", "Thanks!", "success");
+        }
+        else {
+          swal("Oops!", `${data.message}`, "error");
+        }
+      })
+
+  }
 
   return (
     <div>
       <input type="checkbox" id="buyingModal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box relative bg-cyan-300 text-black">
+        <div className="modal-box relative bg-cyan-200 text-black">
           <label htmlFor="buyingModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h3 className="text-lg font-bold">{name}</h3>
-          <p className="py-4">Price: {originalPrice}</p>
-          <p className="py-4">Heyy, {user.displayName} you want to buy {name}?</p>
-          <p className="py-4">Email  {user.email}</p>
-          <input type="text" placeholder="Name" value={displayName} className=" text-black bg-white input input-bordered input-primary w-full" />
-          <input type="text" placeholder="Email" value={email} className=" text-black bg-white input input-bordered input-primary w-full" />
+          <div className='font-bold mb-4'>
+            <h3 className="text-lg font-bold">Product name: {name}</h3>
+            <img src={img} alt='item-img' className='h-44 w-40 rounded-lg'></img>
+            <p>Price: {originalPrice} taka</p>
+            <p>If you want to book this item please fiil up this form</p>
+          </div>
 
-
+          <form onSubmit={handleBookItem} className='grid grid-cols-1 gap-3 font-semibold mt-2'>
+            <input name="name" type="text" placeholder="Your name" defaultValue={user?.displayName} className=" text-white bg-white input input-bordered input-secondary w-full" required disabled />
+            <input name="email" type="email" defaultValue={user?.email} placeholder="Email" className=" text-white bg-white input input-bordered input-secondary w-full" required disabled />
+            <input name="phone" type="text" placeholder="Enter your Phone number" className=" text-black bg-white input input-bordered input-secondary w-full" required />
+            <input name="location" type="text" placeholder="Enter your location" className=" text-black bg-white input input-bordered input-secondary w-full" required />
+            <div>
+              <button type='submit' className="btn btn-primary w-full">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

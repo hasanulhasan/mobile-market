@@ -8,27 +8,27 @@ const Stat = () => {
         <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-3">
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">5000+</p>
-            <p className="text-sm sm:text-base">Regular User</p>
+            <p className="text-sm sm:text-base text-violet-400">Regular User</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
-            <p className="text-4xl font-bold leading-none lg:text-6xl">89K</p>
+            <p className="text-4xl font-bold leading-none lg:text-6xl text-violet-400">89K</p>
             <p className="text-sm sm:text-base">Followers on social media</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">400+</p>
-            <p className="text-sm sm:text-base">Regular Seller</p>
+            <p className="text-sm sm:text-base text-violet-400">Regular Seller</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">12+</p>
-            <p className="text-sm sm:text-base">Media Partner</p>
+            <p className="text-sm sm:text-base text-violet-400">Media Partner</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
-            <p className="text-4xl font-bold leading-none lg:text-6xl">100K</p>
+            <p className="text-4xl font-bold leading-none lg:text-6xl text-violet-400">100K</p>
             <p className="text-sm sm:text-base">Mobile exchange</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">100+</p>
-            <p className="text-sm sm:text-base">Agents</p>
+            <p className="text-sm sm:text-base text-violet-400">Agents</p>
           </div>
         </div>
       </section>
