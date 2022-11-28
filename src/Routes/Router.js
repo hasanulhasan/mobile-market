@@ -11,6 +11,7 @@ import MyOrders from "../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
 import Home from "../Pages/Home/Home";
 import Login from "../UserControl/Login/Login";
+import SellerRoute from "../UserControl/SellerRoute/SellerRoute";
 import SignUp from "../UserControl/SignUp/SignUp";
 import Error from "../Utilities/Error/Error";
 
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <MyProducts></MyProducts>
+        element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
       },
       {
         path: '/dashboard/allSeller',
