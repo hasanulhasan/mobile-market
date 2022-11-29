@@ -7,7 +7,7 @@ import useSeller from '../../Utilities/Hooks/useSeller';
 
 const DashBoard = () => {
   const { user } = useContext(AuthContext);
-  const [isSeller] = useSeller(user?.email);
+  // const [isSeller] = useSeller(user?.email);
   return (
     <div>
       <Navbar></Navbar>
@@ -16,14 +16,13 @@ const DashBoard = () => {
         <div className="divider divider-horizontal"></div>
         <div className="grid lg:h-screen lg:w-1/6 flex-grow card bg-base-300 rounded-box p-6">
           <ul className='w-full text-center font-semibold'>
-            <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/addProducts'>Add Product</Link></li>
-            {
-              isSeller &&
-              <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard'>My Products</Link></li>
-            }
-            <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/allSeller'>All Seller</Link></li>
+            <li className='my-2 bg-gray-700 rounded-lg py-1'><Link to='/dashboard/addProducts'>Add Product</Link></li>
 
-            <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+            <li className='my-2 bg-gray-700 rounded-lg py-1'><Link to='/dashboard'>My Products</Link></li>
+
+            <li className='my-2 bg-gray-500 rounded-lg py-1'><Link to='/dashboard/allSeller'>All Seller</Link></li>
+
+            <li className='my-2 bg-gray-500 rounded-lg py-1'><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
 
             <li className='my-2 bg-gray-600 rounded-lg py-1'><Link to='/dashboard/myOrders'>My Orders</Link></li>
           </ul></div>

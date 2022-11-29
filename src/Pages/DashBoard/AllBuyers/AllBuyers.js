@@ -24,7 +24,7 @@ const AllBuyers = () => {
 
   return (
     <div>
-      <p className='text-4xl font-bold mb-3'>All Buyers</p>
+      <p className='text-4xl font-bold mb-3'>All Buyers {buyers.length}</p>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>
@@ -38,7 +38,7 @@ const AllBuyers = () => {
           </thead>
           <tbody>
             {
-              buyers.map(buyer => <tr>
+              buyers.map(buyer => <tr key={buyer._id}>
                 <th>{buyer.buyerName}</th>
                 <td>{buyer.email}</td>
                 <td>{buyer.phone}</td>

@@ -20,7 +20,7 @@ const AllCategories = () => {
         </div>
         <div className='my-4 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
           {
-            mobiles.map(mobile => <MobileCart key={mobile.phone_id} mobile={mobile}></MobileCart>)
+            mobiles.map(mobile => <MobileCart key={mobile._id} mobile={mobile}></MobileCart>)
           }
         </div>
         <div className='flex justify-center my-3'>

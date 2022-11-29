@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../UserControl/Contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const dateToday = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+  const email = user?.email;
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,10 +22,9 @@ const AddProduct = () => {
     const date = form.date.value;
     const yearUsed = form.yearUsed.value;
     const category = form.category.value;
-    console.log(name, sellerName, phone, img, location, originalPrice, resalePrice, date, yearUsed, category);
 
     const productInfo = {
-      name, sellerName, phone, img, location, originalPrice, resalePrice, date, yearUsed, category
+      email, name, sellerName, phone, img, location, originalPrice, resalePrice, date, yearUsed, category
     }
 
     fetch('http://localhost:5000/addProducts', {
@@ -37,10 +40,10 @@ const AddProduct = () => {
         if (data.acknowledged) {
           form.reset();
           swal("Succeed!", "You have added a Product!", "success");
+          navigate('/dashboard');
         }
       })
       .catch(err => console.error(err))
-
   }
 
 
@@ -68,7 +71,7 @@ const AddProduct = () => {
                 <label className="label">
                   <span className="label-text text-xl">Seller Name</span>
                 </label>
-                <input type="text" placeholder="Seller Name" name="sellerName" className="input input-bordered" value={user.displayName} />
+                <input type="text" placeholder="Seller Name" name="sellerName" className="input input-bordered" value={user?.displayName} />
               </div>
               <div className="form-control">
                 <label className="label">
@@ -89,7 +92,7 @@ const AddProduct = () => {
                 <label className="label">
                   <span className="label-text text-xl">Post Date</span>
                 </label>
-                <input type="text" placeholder="i.e (10 Sep 2021)" name="date" className="input input-bordered" />
+                <input type="text" placeholder="" value={dateToday} name="date" className="input input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">

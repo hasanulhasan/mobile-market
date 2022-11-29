@@ -19,7 +19,7 @@ const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
       buyerName, resalePrice, img, name, email, phone, location
     }
 
-    console.log(booking);
+    // console.log(booking);
     fetch('http://localhost:5000/bookings', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -27,10 +27,10 @@ const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         if (data.acknowledged) {
           setMobileInfo(null);
-          swal("Item Booked!", "Thanks for you booking!", "success");
+          swal("Item Booked!", "Thanks for buying!", "success");
           form.reset();
         }
         else {
@@ -56,8 +56,8 @@ const BuyingModal = ({ mobileInfo, setMobileInfo }) => {
           </div>
 
           <form onSubmit={handleBookItem} className='grid grid-cols-1 gap-3 font-semibold mt-2'>
-            <input name="name" type="text" placeholder="Your name" defaultValue={user?.displayName} className=" text-white bg-white input input-bordered input-secondary w-full" required disabled />
-            <input name="email" type="email" defaultValue={user?.email} placeholder="Email" className=" text-white bg-white input input-bordered input-secondary w-full" required disabled />
+            <input name="name" type="text" placeholder="Your name" value={user?.displayName} className=" text-black bg-white input input-bordered input-secondary w-full" required />
+            <input name="email" type="email" value={user?.email} placeholder="Email" className=" text-black bg-white input input-bordered input-secondary w-full" required />
             <input name="phone" type="text" placeholder="Enter your Phone number" className=" text-black bg-white input input-bordered input-secondary w-full" required />
             <input name="location" type="text" placeholder="Enter your location" className=" text-black bg-white input input-bordered input-secondary w-full" required />
             <div>

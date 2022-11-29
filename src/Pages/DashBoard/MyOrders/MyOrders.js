@@ -5,7 +5,7 @@ import { AuthContext } from '../../../UserControl/Contexts/AuthProvider/AuthProv
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
-  console.log(orders);
+  // console.log(orders);
 
   useEffect(() => {
     fetch(`http://localhost:5000/bookings/${user?.email}`)
@@ -30,7 +30,7 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {
-              orders.map(order => <tr>
+              orders.map(order => <tr key={order._id}>
                 <th><div className="avatar">
                   <div className="w-20 rounded">
                     <img src={order.img} alt='avatar' />
