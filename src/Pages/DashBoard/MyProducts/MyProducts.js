@@ -11,7 +11,7 @@ const MyProducts = () => {
   const closeModal = () => {
     setDeleteProducts(null)
   }
-
+  //deleting phone
   const handleDeleteProducts = (product) => {
     fetch(`http://localhost:5000/allphones/${product._id}`, {
       method: 'DELETE',
@@ -21,16 +21,15 @@ const MyProducts = () => {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
         if (data.deletedCount > 0) {
           swal("Success", `${product.name} deleted`, "success");
           refetch();
         }
       })
   }
-
+  //sending advertise item on database
   const advertisePhone = (phone) => {
-    console.log('clicked on', phone);
+
     fetch('http://localhost:5000/advertise', {
       method: 'POST',
       headers: {
@@ -45,7 +44,10 @@ const MyProducts = () => {
           swal("Succeed!", "You have posted as it advertise!", "success");
         }
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err)
+        swal("Oops!", "This product already added!", "error");
+      })
   }
 
   const url = `http://localhost:5000/allphones/${user?.email}`;
@@ -91,9 +93,12 @@ const MyProducts = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </label></th>
                 <th>UnSold</th>
-                <th><button
-                  onClick={() => advertisePhone(phone)}
-                  className="btn btn-sm btn-warning">Advertise</button></th>
+                <th>
+                  <button
+                    onClick={() => advertisePhone(phone)}
+                    className="btn btn-sm btn-warning"
+                  >Advertise</button>
+                </th>
               </tr>)
             }
           </tbody>
@@ -107,7 +112,7 @@ const MyProducts = () => {
           modalData={deleteProducts}
         ></DeleteModal>
       }
-    </div>
+    </div >
   );
 };
 

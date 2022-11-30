@@ -9,3 +9,7 @@
 6- It is a full stack website where React and Express NodeJs and MongoDB is working simultaneously
 
 ### `Live link`
+
+adminEmail: \<hasi@khusi.com\>
+
+adminPassword: \<hasikhusi8\>
