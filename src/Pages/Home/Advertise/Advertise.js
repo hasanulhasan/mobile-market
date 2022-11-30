@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import BuyingModal from './BuyingModal';
-import SingleCategory from './SingleCategory';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import BuyingModal from '../../Category/BuyingModal';
+import AdvertiseCard from './AdvertiseCard';
 
-const Category = () => {
+const Advertise = () => {
   const phones = useLoaderData();
   const [mobileInfo, setMobileInfo] = useState(null);
 
@@ -16,11 +16,11 @@ const Category = () => {
         </div>
         <div className='my-4 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
           {
-            phones.map(mobile => <SingleCategory
+            phones.map(mobile => <AdvertiseCard
               key={mobile._id}
               mobile={mobile}
               setMobileInfo={setMobileInfo}
-            ></SingleCategory>)
+            ></AdvertiseCard>)
           }
         </div>
         <div className='flex justify-center my-3'>
@@ -40,4 +40,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Advertise;

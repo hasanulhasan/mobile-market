@@ -5,7 +5,6 @@ import { AuthContext } from '../../../UserControl/Contexts/AuthProvider/AuthProv
 import DeleteModal from '../../../Utilities/DeleteModal/DeleteModal';
 
 const AllSeller = () => {
-  // const [sellers, setSellers] = useState([]);
   const [deleteSeller, setDeleteSeller] = useState([]);
 
   const closeModal = () => {
@@ -21,7 +20,7 @@ const AllSeller = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         if (data.deletedCount > 0) {
           swal("Success", `${seller.name} deleted`, "success");
           refetch();
@@ -29,18 +28,10 @@ const AllSeller = () => {
       })
   }
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/users/seller`)
-  //     .then(res => res.json())
-  //     .then(data => setSellers(data))
-  // }, [])
-
-  const url = `http://localhost:5000/users/seller`;
-
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ['seller'],
     queryFn: async () => {
-      const res = await fetch(url);
+      const res = await fetch(`http://localhost:5000/users/seller`);
       const data = await res.json();
       return data;
     }
@@ -83,7 +74,6 @@ const AllSeller = () => {
           successAction={handleDeleteSeller}
           modalData={deleteSeller}
         ></DeleteModal>
-
       }
     </div>
   );

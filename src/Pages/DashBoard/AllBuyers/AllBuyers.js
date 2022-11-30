@@ -1,25 +1,41 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
+import swal from 'sweetalert';
 import { AuthContext } from '../../../UserControl/Contexts/AuthProvider/AuthProvider';
+import DeleteModal from '../../../Utilities/DeleteModal/DeleteModal';
 
 const AllBuyers = () => {
-  const [buyers, setBuyers] = useState([]);
+  const [deleteBuyers, setDeleteBuyers] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/bookings`)
+  const closeModal = () => {
+    setDeleteBuyers(null)
+  }
+  const handleDeleteBuyers = (buyer) => {
+    console.log('delete operation')
+    fetch(`http://localhost:5000/bookings/${buyer._id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
       .then(res => res.json())
-      .then(data => setBuyers(data))
-  }, [])
+      .then(data => {
+        // console.log(data)
+        if (data.deletedCount > 0) {
+          swal("Success", `${buyer.buyerName} deleted`, "success");
+          refetch();
+        }
+      })
+  }
 
-  // const url = `http://localhost:5000/users/seller`;
-  // const { data: users = [] } = useQuery({
-  //   queryKey: ['users'],
-  //   queryFn: async () => {
-  //     const res = await fetch(url);
-  //     const data = await res.json();
-  //     return data;
-  //   }
-  // })
+  const { data: buyers = [], refetch } = useQuery({
+    queryKey: ['bookings'],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/bookings`);
+      const data = await res.json();
+      return data;
+    }
+  })
 
 
   return (
@@ -30,7 +46,7 @@ const AllBuyers = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Buyer Email</th>
+              <th>Purchased Product</th>
               <th>Phone</th>
               <th>Location</th>
               <th>Delete</th>
@@ -40,17 +56,28 @@ const AllBuyers = () => {
             {
               buyers.map(buyer => <tr key={buyer._id}>
                 <th>{buyer.buyerName}</th>
-                <td>{buyer.email}</td>
+                <td>{buyer.name}</td>
                 <td>{buyer.phone}</td>
                 <td>{buyer.location}</td>
-                <td><button className="btn btn-square btn-outline">
+                <td><label
+                  htmlFor="delete-modal"
+                  onClick={() => setDeleteBuyers(buyer)}
+                  className="btn btn-square btn-outline">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button></td>
+                </label></td>
               </tr>)
             }
           </tbody>
         </table>
       </div>
+      {
+        deleteBuyers && <DeleteModal
+          title={`Are you want to delete ${deleteBuyers.name}?`}
+          closeModal={closeModal}
+          successAction={handleDeleteBuyers}
+          modalData={deleteBuyers}
+        ></DeleteModal>
+      }
     </div>
   );
 };
