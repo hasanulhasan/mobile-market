@@ -106,7 +106,7 @@ const SignUp = () => {
                     <span className="label-text">Select your role</span>
                   </label>
                   <select required className="select w-full bordered border-emerald-800" {...register("role")}>
-                    <option value='admin' name='admin' >Admin</option>
+                    <option value='buyer' name='admin' >Buyer</option>
                     <option value='seller' name='seller' >Seller</option>
                   </select>
                 </div>
