@@ -13,7 +13,7 @@ const MyProducts = () => {
   }
   //deleting phone
   const handleDeleteProducts = (product) => {
-    fetch(`http://localhost:5000/allphones/${product._id}`, {
+    fetch(`https://assignment-12-server-coral-delta.vercel.app/allphones/${product._id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -30,7 +30,7 @@ const MyProducts = () => {
   //sending advertise item on database
   const advertisePhone = (phone) => {
 
-    fetch('http://localhost:5000/advertise', {
+    fetch('https://assignment-12-server-coral-delta.vercel.app/advertise', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -50,7 +50,7 @@ const MyProducts = () => {
       })
   }
 
-  const url = `http://localhost:5000/allphones/${user?.email}`;
+  const url = `https://assignment-12-server-coral-delta.vercel.app/allphones/${user?.email}`;
 
   const { data: allphones = [], refetch } = useQuery({
     queryKey: ['allphones', user?.email],

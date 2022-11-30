@@ -5,7 +5,7 @@ const CategoryShow = () => {
   return (
     <div>
       <div className='text-center my-12'>
-        <h1 className="text-5xl font-semibold py-3 ">Phone Category</h1>
+        <h1 className="text-5xl font-semibold py-3 ">Phone <span className='text-violet-500'>Category</span></h1>
         <p className='pb-8'>You can choice your favorite second hand phone category </p>
       </div>
       <div className='my-4 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>

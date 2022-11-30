@@ -8,7 +8,7 @@
 5- Buyer and Seller will get benefits
 6- It is a full stack website where React and Express NodeJs and MongoDB is working simultaneously
 
-### `Live link`
+### `Live link` https://mobile-market-78c1a.web.app/
 
 adminEmail: \<hasi@khusi.com\>
 

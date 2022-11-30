@@ -8,7 +8,7 @@ const MyOrders = () => {
   // console.log(orders);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings/${user?.email}`)
+    fetch(`https://assignment-12-server-coral-delta.vercel.app/bookings/${user?.email}`)
       .then(res => res.json())
       .then(data => setOrders(data))
   }, [])

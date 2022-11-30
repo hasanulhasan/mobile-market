@@ -19,16 +19,16 @@ const Stat = () => {
             <p className="text-sm sm:text-base text-violet-400">Regular Seller</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
-            <p className="text-4xl font-bold leading-none lg:text-6xl">12+</p>
-            <p className="text-sm sm:text-base text-violet-400">Media Partner</p>
+            <p className="text-4xl font-bold leading-none lg:text-6xl text-violet-400">12+</p>
+            <p className="text-sm sm:text-base ">Media Partner</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
-            <p className="text-4xl font-bold leading-none lg:text-6xl text-violet-400">100K</p>
-            <p className="text-sm sm:text-base">Mobile exchange</p>
+            <p className="text-4xl font-bold leading-none lg:text-6xl ">100K</p>
+            <p className="text-sm sm:text-base text-violet-400">Mobile exchange</p>
           </div>
           <div className="flex flex-col justify-start m-2 lg:m-6">
-            <p className="text-4xl font-bold leading-none lg:text-6xl">100+</p>
-            <p className="text-sm sm:text-base text-violet-400">Agents</p>
+            <p className="text-4xl font-bold leading-none lg:text-6xl text-violet-400">100+</p>
+            <p className="text-sm sm:text-base ">Agents</p>
           </div>
         </div>
       </section>

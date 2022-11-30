@@ -7,7 +7,7 @@ import AdvertiseCard from './AdvertiseCard';
 const Advertise = () => {
   const [mobileInfo, setMobileInfo] = useState(null);
 
-  const url = `http://localhost:5000/advertise`;
+  const url = `https://assignment-12-server-coral-delta.vercel.app/advertise`;
 
   const { data: phones = [] } = useQuery({
     queryKey: ['advertise'],

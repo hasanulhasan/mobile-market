@@ -12,7 +12,7 @@ const AllSeller = () => {
   }
   const handleDeleteSeller = (seller) => {
     console.log('delete operation')
-    fetch(`http://localhost:5000/users/${seller._id}`, {
+    fetch(`https://assignment-12-server-coral-delta.vercel.app/users/${seller._id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -31,7 +31,7 @@ const AllSeller = () => {
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ['seller'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/users/seller`);
+      const res = await fetch(`https://assignment-12-server-coral-delta.vercel.app/users/seller`);
       const data = await res.json();
       return data;
     }

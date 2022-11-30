@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: '/category/:id',
         element: <Category></Category>,
-        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-12-server-coral-delta.vercel.app/category/${params.id}`)
       }
     ]
   },

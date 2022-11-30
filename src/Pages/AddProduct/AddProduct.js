@@ -27,7 +27,7 @@ const AddProduct = () => {
       email, name, sellerName, phone, img, location, originalPrice, resalePrice, date, yearUsed, category
     }
 
-    fetch('http://localhost:5000/addProducts', {
+    fetch('https://assignment-12-server-coral-delta.vercel.app/addProducts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -40,7 +40,7 @@ const AddProduct = () => {
         if (data.acknowledged) {
           form.reset();
           swal("Succeed!", "You have added a Product!", "success");
-          navigate('/dashboard');
+          navigate('/dashboard/myProducts');
         }
       })
       .catch(err => console.error(err))

@@ -6,7 +6,7 @@ const AllCategories = () => {
   const [mobiles, setMobiles] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/allphones')
+    fetch('https://assignment-12-server-coral-delta.vercel.app/allphones')
       .then(res => res.json())
       .then(data => setMobiles(data))
   }, [])
