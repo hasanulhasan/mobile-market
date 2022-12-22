@@ -1,7 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import signup from '../../../src/asset/signup.gif'
@@ -17,12 +16,10 @@ const SignUp = () => {
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const handleLogin = (data) => {
-    console.log(data);
     createUser(data.email, data.password)
       .then(result => {
         const user = result.user;
         console.log(user);
-        toast('Signup successful')
         const userInfo = {
           displayName: data.name
         }
@@ -32,7 +29,6 @@ const SignUp = () => {
             reset();
           })
           .catch(err => console.error(err))
-
       })
       .catch(err => {
         console.error(err)
@@ -42,7 +38,6 @@ const SignUp = () => {
 
   const saveUserInfo = (name, email, role) => {
     const user = { name, email, role };
-    // console.log(user);
     fetch(`https://assignment-12-server-coral-delta.vercel.app/users`, {
       method: 'POST',
       headers: { 'content-type': 'application/json ' },
@@ -57,12 +52,11 @@ const SignUp = () => {
   }
 
   const googleButton = () => {
-    console.log('clicked');
     providerLogin(googleProvider)
       .then(result => {
         const user = result.user;
         console.log(user);
-        toast('Login successful');
+        swal("Log in Successful", "", "success");
         navigate(from, { replace: true });
       })
       .catch(err => {

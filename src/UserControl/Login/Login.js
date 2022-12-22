@@ -1,10 +1,10 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../../src/asset/login.gif'
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
+import swal from 'sweetalert';
 
 const Login = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -23,8 +23,8 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         // console.log(user);
-        toast('Login successful');
         reset();
+        swal("Log in Successful", "", "success");
         navigate(from, { replace: true })
       })
       .catch(err => {
@@ -39,7 +39,6 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
-        toast('Login successful');
         navigate(from, { replace: true });
       })
       .catch(err => {
