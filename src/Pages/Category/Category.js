@@ -6,12 +6,19 @@ import SingleCategory from './SingleCategory';
 const Category = () => {
   const phones = useLoaderData();
   const [mobileInfo, setMobileInfo] = useState(null);
+  // console.log(phones[0].category[0].toUpperCase());
+
+  const ct_1stLatter = phones[0].category[0].toUpperCase()
+  console.log(typeof ct_1stLatter)
+  const ct_name = phones[0].category.slice(1)
+  const categoryName = ct_1stLatter + ct_name
+
 
   return (
     <div>
       <div>
         <div className='text-center'>
-          <h1 className="text-5xl font-semibold py-3 ">Your Searching Category is here</h1>
+          <h1 className="text-5xl font-semibold py-3 ">{categoryName} category is here</h1>
           <p className='pb-8'>You can choice your favorite second hand smart phone phone here </p>
         </div>
         <div className='my-4 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
@@ -28,13 +35,11 @@ const Category = () => {
         </div>
       </div>
       {
-
         mobileInfo &&
         <BuyingModal
           mobileInfo={mobileInfo}
           setMobileInfo={setMobileInfo}
         ></BuyingModal>
-
       }
     </div>
   );

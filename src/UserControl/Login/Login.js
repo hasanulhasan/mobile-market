@@ -13,16 +13,13 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
-
   const from = location.state?.from?.pathname || '/'
 
   const handleLogin = (data) => {
     setLoginError('');
-    // console.log(data);
     signIn(data.email, data.password)
       .then(result => {
         const user = result.user;
-        // console.log(user);
         reset();
         swal("Log in Successful", "", "success");
         navigate(from, { replace: true })

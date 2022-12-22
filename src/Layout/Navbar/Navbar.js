@@ -13,7 +13,7 @@ const Navbar = () => {
   const menuLinks = <React.Fragment>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/blog'>Blog</Link></li>
-    {/* <li><Link to='/allCategories'>All Category</Link></li> */}
+    <li><Link to='/allCategories'>All Category</Link></li>
     {
       user?.uid ?
         <>
