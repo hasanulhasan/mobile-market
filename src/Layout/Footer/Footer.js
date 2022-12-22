@@ -20,9 +20,6 @@ const Footer = () => {
                 <a rel="noopener noreferrer" href="#">Features</a>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">Integrations</a>
-              </li>
-              <li>
                 <a rel="noopener noreferrer" href="#">Pricing</a>
               </li>
               <li>
