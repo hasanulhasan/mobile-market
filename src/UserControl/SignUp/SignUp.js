@@ -69,7 +69,7 @@ const SignUp = () => {
       <div className=" py-10 bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div>
-            <img src={signup} alt='login'></img>
+            <img src={signup} alt='login' className='rounded-lg'></img>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">

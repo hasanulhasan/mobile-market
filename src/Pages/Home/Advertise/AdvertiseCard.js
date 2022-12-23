@@ -4,7 +4,7 @@ const AdvertiseCard = ({ mobile, setMobileInfo }) => {
 
   const { name, img, location, sellerName, originalPrice, resalePrice, yearUsed, date } = mobile;
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl outline p-4 outline-lime-100">
+    <div className="card card-compact w-96 bg-base-100 shadow-xl outline p-4 outline-violet-400">
       <figure>
         <img src={img} alt=".." className='h-72 w-80 rounded-lg' />
       </figure>
@@ -28,7 +28,6 @@ const AdvertiseCard = ({ mobile, setMobileInfo }) => {
             className="btn btn-warning  btn-outline w-full" >Book Now</label>
         </div>
       </div>
-
     </div>
   );
 };

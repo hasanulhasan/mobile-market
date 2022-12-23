@@ -48,7 +48,7 @@ const Login = () => {
       <div className="py-10 bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div>
-            <img src={login} alt='login'></img>
+            <img src={login} alt='login' className='rounded-lg'></img>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <p className='text-4xl text-center p-2 py-4 font-bold'>Login</p>
