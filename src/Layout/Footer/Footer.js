@@ -11,6 +11,7 @@ const Footer = () => {
             </div>
             <span className="self-center text-2xl font-semibold">Mobile Market</span>
           </a>
+          <p>Heyy, you are in The biggest buying and selling<br /> market of mobile in your arena</p>
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           <div className="space-y-3">
@@ -35,6 +36,9 @@ const Footer = () => {
               </li>
               <li>
                 <a rel="noopener noreferrer" href="#">Terms of Service</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#">Return Policy</a>
               </li>
             </ul>
           </div>
